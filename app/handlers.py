@@ -1,14 +1,13 @@
-#! /bin/python3
-
 from aiogram import  F, Router
 from aiogram.filters import CommandStart, Command
 from aiogram.types import Message
+import app.keyboards as kb
 
 rt=Router()
 
 @rt.message(CommandStart())
 async def cmd_start(message: Message):
-    await message.answer('Hello!')
+    await message.reply('Hello!',reply_markup=await kb.keybord_buttonbuilder())
 
 @rt.message(Command('help'))
 async def cmd_help(message:Message):
